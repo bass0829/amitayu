@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMITAYU JAMTSE LING</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Montserrat, Noto Serif TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="ShortCut Icon" href="images/favicon.ico">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'pearl-bg': '#FCFBF8',
+            'warm-ivory': '#F8F6F0',
+            'gold-light': '#F4EDE1',
+            'gold-border': '#DFD3C3',
+            'gold-accent': '#C5A059',
+            'gold-rich': '#D4AF37',
+            'crimson-sacred': '#8B1E27',
+            'crimson-deep': '#68131B',
+            'crimson-soft': '#9B111E',
+            'charcoal-soft': '#2A2927',
+            'muted-stone': '#767471',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth anti-aliased font rendering */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #FCFBF8;
+      color: #2A2927;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Sacred Geometry subtle rotation */
+    @keyframes spin-ultra-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-reverse-slow {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes float-subtle {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.015); }
+    }
+    @keyframes pulse-halo {
+      0%, 100% { opacity: 0.35; transform: scale(0.98); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    @keyframes shimmer-gold {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .animate-spin-slow {
+      animation: spin-ultra-slow 90s linear infinite;
+    }
+    .animate-spin-reverse {
+      animation: spin-reverse-slow 120s linear infinite;
+    }
+    .animate-float-subtle {
+      animation: float-subtle 7s ease-in-out infinite;
+    }
+    .animate-halo {
+      animation: pulse-halo 9s ease-in-out infinite;
+    }
+
+    /* Golden text shimmer */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #8B1E27 0%, #C5A059 40%, #E6CA85 70%, #9B111E 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-gold 12s ease-in-out infinite;
+    }
+
+    /* Ambient noise overlay for pristine tactile texture */
+    .bg-grain {
+      background-image: radial-gradient(rgba(197, 160, 89, 0.08) 1px, transparent 0);
+      background-size: 32px 32px;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FCFBF8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #DFD3C3;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between selection:bg-crimson-sacred selection:text-white bg-grain">
+
+  <!-- Interactive golden canvas dust -->
+  <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+
+  <!-- Ambient Light Orbs (Champagne & Sacred Crimson Hues) -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[720px] bg-gradient-to-b from-[#F7EEDD]/70 via-[#F3E7D3]/35 to-transparent rounded-full blur-3xl animate-halo"></div>
+    <div class="absolute bottom-10 left-1/4 w-[500px] h-[500px] bg-[#9B111E]/[0.025] rounded-full blur-[100px]"></div>
+    <div class="absolute top-1/3 right-10 w-[420px] h-[420px] bg-[#C5A059]/[0.045] rounded-full blur-[90px]"></div>
+  </div>
+
+  <!-- Subtle Geometric Mandala/Concentric Circles Background Layer -->
+  <div class="fixed inset-0 pointer-events-none flex items-center justify-center z-0 overflow-hidden opacity-35">
+    <!-- Outer concentric ring -->
+    <div class="w-[960px] h-[960px] rounded-full border border-[#D4AF37]/20 border-dashed animate-spin-slow absolute"></div>
+    <!-- Inner geometry lines -->
+    <div class="w-[720px] h-[720px] rounded-full border border-[#C5A059]/25 animate-spin-reverse absolute"></div>
+    <div class="w-[500px] h-[500px] rounded-full border border-[#C5A059]/30 border-dotted absolute"></div>
+    <!-- Crosshair subtle guides -->
+    <div class="w-[1100px] h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent absolute"></div>
+    <div class="h-[1100px] w-[1px] bg-gradient-to-b from-transparent via-[#C5A059]/20 to-transparent absolute"></div>
+  </div>
+
+  <header class="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
+    <!-- Top Left: Sacred Seal Monogram -->
+    <div class="flex items-center gap-3 group cursor-default">
+      <div class="flex flex-col">
+        <span class="font-cinzel text-xs tracking-[0.28em] text-charcoal-soft uppercase font-medium">AMITAYU JAMTSE LING</span>
+        <span class="text-[9px] tracking-[0.2em] text-muted-stone uppercase font-light">GLOBAL • OFFICIAL</span>
+      </div>
+    </div>
+
+    <!-- Top Right: Launch Status Pill -->
+    <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-border bg-white/70 backdrop-blur-md shadow-xs">
+      <span class="w-2 h-2 rounded-full bg-crimson-sacred animate-ping"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-crimson-sacred -ml-3"></span>
+      <span class="font-cinzel text-[10px] tracking-[0.22em] text-charcoal-soft font-semibold uppercase">COMING SOON • 2027</span>
+    </div>
+  </header>
+
+  <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12 max-w-4xl mx-auto w-full text-center">
+    
+    <!-- Central LOGO 專屬留空預留區塊（若需加入圖片，可在此置入 <img src="logo.png" class="max-h-36 sm:max-h-44 object-contain mx-auto" />） -->
+    <div class="w-full my-6 sm:my-10 flex items-center justify-center min-h-[100px] sm:min-h-[140px]" id="logo-reserved-area">
+      <img src="images/logo.png" class="max-h-36 sm:max-h-44 object-contain mx-auto" />
+    </div>
+
+    <!-- Headline Pre-title -->
+    <div class="inline-flex items-center gap-2 mb-3">
+      <div class="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-gold-accent"></div>
+      <span class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-crimson-sacred uppercase font-semibold">
+        AMITAYU JAMTSE LING
+      </span>
+      <div class="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-gold-accent"></div>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-[0.06em] text-charcoal-soft leading-tight mb-4">
+      COMING SOON
+    </h1>
+
+    <p class="font-serif italic text-lg sm:text-2xl text-gold-accent max-w-xl mx-auto mb-6 tracking-wide font-light">
+      "平安喜樂，扎西德列"
+    </p>
+
+    <!-- Subtitle / Concept Intro -->
+    <p class="font-sans text-xs sm:text-sm text-muted-stone max-w-lg mx-auto leading-relaxed tracking-wider font-light mb-10">
+      地址：台北市大安區大安路一段75巷7號2樓之2<br>
+      電話：886-2-2731 8896
+    </p>
+
+  </main>
+
+  <footer class="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gold-border/40 mt-8">
+    <div class="text-[11px] font-sans text-muted-stone tracking-widest font-light text-center sm:text-left">
+      © <span id="current-year">2026</span> AMITAYU JAMTSE LING. ALL RIGHTS RESERVED.
+    </div>
+
+    <!-- Social / Contact Icons with gold luster -->
+    <div class="flex items-center gap-6">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/amitayu.org?locale=zh_TW" target="_blank" class="text-charcoal-soft hover:text-crimson-sacred transition-colors duration-300 p-1" title="Facebook" aria-label="Facebook">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="javascript:void(0);" class="text-charcoal-soft hover:text-crimson-sacred transition-colors duration-300 p-1" title="Instagram" aria-label="Instagram">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+        </svg>
+      </a>
+
+      <!-- LINE -->
+      <a href="https://page.line.me/539wlpip?openQrModal=true" target="_blank" class="text-charcoal-soft hover:text-crimson-sacred transition-colors duration-300 p-1" title="LINE" aria-label="LINE">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.066.517.251l2.44 3.317V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.605c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    /* ==========================================================
+       1. AMBIENT PARTICLES (CHAMPAGNE GOLD DUST)
+       ========================================================== */
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class GoldParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 0.6;
+        this.speedX = (Math.random() - 0.5) * 0.25;
+        this.speedY = -Math.random() * 0.35 - 0.1; // Gentle ascending drift
+        this.opacity = Math.random() * 0.6 + 0.15;
+        this.fadeSpeed = Math.random() * 0.006 + 0.002;
+        this.pulseDir = Math.random() > 0.5 ? 1 : -1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Opacity pulsing for shimmering gold effect
+        this.opacity += this.fadeSpeed * this.pulseDir;
+        if (this.opacity > 0.75 || this.opacity < 0.1) {
+          this.pulseDir *= -1;
+        }
+
+        // Screen wrap
+        if (this.y < 0) this.y = height;
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        // Rich Champagne Gold with subtle Sacred Crimson specks
+        if (Math.random() > 0.88) {
+          ctx.fillStyle = `rgba(139, 30, 39, ${this.opacity * 0.85})`;
+        } else {
+          ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+        }
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    // Initialize 60 refined subtle dust specks
+    const particleCount = Math.min(Math.floor(window.innerWidth / 20), 65);
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new GoldParticle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* ==========================================================
+       3. COUNTDOWN TIMER IMPLEMENTATION
+       ========================================================== */
+    // Set target date 48 days from now
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 48);
+    targetDate.setHours(targetDate.getHours() + 16);
+    targetDate.setMinutes(targetDate.getMinutes() + 32);
+
+    const elDays = document.getElementById('count-days');
+    const elHours = document.getElementById('count-hours');
+    const elMinutes = document.getElementById('count-minutes');
+    const elSeconds = document.getElementById('count-seconds');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        elDays.textContent = '00';
+        elHours.textContent = '00';
+        elMinutes.textContent = '00';
+        elSeconds.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      elDays.textContent = String(days).padStart(2, '0');
+      elHours.textContent = String(hours).padStart(2, '0');
+      elMinutes.textContent = String(minutes).padStart(2, '0');
+      elSeconds.textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* ==========================================================
+       4. SUBSCRIPTION FORM & TOAST NOTIFICATION
+       ========================================================== */
+    const subscribeForm = document.getElementById('subscribe-form');
+    const emailInput = document.getElementById('email-input');
+    const statusToast = document.getElementById('status-toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    function showToast(text, duration = 4000) {
+      toastMessage.textContent = text;
+      statusToast.classList.remove('hidden');
+      statusToast.classList.add('opacity-100');
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        statusToast.classList.add('hidden');
+      }, duration);
+    }
+
+    subscribeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Show immediate aesthetic confirmation
+      showToast(`銘刻致謝：${email} 已成功納入首波專屬預覽名單。`);
+      emailInput.value = '';
+    });
+  </script>
+</body>
+</html>
